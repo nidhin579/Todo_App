@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:todo_app/app/app.bottomsheets.dart';
 import 'package:todo_app/app/app.dialogs.dart';
 import 'package:todo_app/app/app.locator.dart';
@@ -32,6 +33,7 @@ class MainApp extends StatelessWidget {
       navigatorObservers: [
         StackedService.routeObserver,
       ],
+      builder: EasyLoading.init(),
     );
   }
 }

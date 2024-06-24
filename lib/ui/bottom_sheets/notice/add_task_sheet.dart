@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:stacked_services/src/models/overlay_request.dart';
+import 'package:stacked_services/src/models/overlay_response.dart';
 import 'package:todo_app/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:todo_app/ui/views/home/widgets/widgets.dart';
 import 'add_task_sheet_model.dart';
 
-class AddTaskSheet extends StackedView<NoticeSheetModel> {
-  const AddTaskSheet(SheetRequest request, {Key? key}) : super(key: key);
+class AddTaskSheet extends StackedView<AddTaskSheetModel> {
+  const AddTaskSheet(
+      {Key? key,
+      required SheetRequest request,
+      required void Function(SheetResponse response) completer})
+      : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    NoticeSheetModel viewModel,
+    AddTaskSheetModel viewModel,
     Widget? child,
   ) {
     final theme = Theme.of(context);
+    String title = '';
+    String description = '';
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: BoxDecoration(
@@ -40,6 +47,9 @@ class AddTaskSheet extends StackedView<NoticeSheetModel> {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
+            onChanged: (v) {
+              title = v;
+            },
           ),
           const SizedBox(height: 12),
           TextField(
@@ -49,11 +59,14 @@ class AddTaskSheet extends StackedView<NoticeSheetModel> {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
+            onChanged: (v) {
+              description = v;
+            },
           ),
           verticalSpaceMedium,
           AppButton(
             text: 'Add',
-            onTap: () {},
+            onTap: () => viewModel.addTask(title, description),
           ),
           verticalSpaceMedium,
         ],
@@ -62,5 +75,6 @@ class AddTaskSheet extends StackedView<NoticeSheetModel> {
   }
 
   @override
-  NoticeSheetModel viewModelBuilder(BuildContext context) => NoticeSheetModel();
+  AddTaskSheetModel viewModelBuilder(BuildContext context) =>
+      AddTaskSheetModel();
 }

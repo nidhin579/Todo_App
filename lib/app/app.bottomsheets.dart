@@ -18,7 +18,7 @@ void setupBottomSheetUi() {
 
   final Map<BottomSheetType, SheetBuilder> builders = {
     BottomSheetType.addTask: (context, request, completer) =>
-        AddTaskSheet(request),
+        AddTaskSheet(request: request, completer: completer),
   };
 
   bottomsheetService.setCustomSheetBuilders(builders);

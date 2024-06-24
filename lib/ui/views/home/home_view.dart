@@ -50,6 +50,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       );
                     }
                     return ListView.separated(
+                      physics: const BouncingScrollPhysics(),
                       itemCount: snapshot.data?.docs.length ?? 0,
                       separatorBuilder: (context, index) {
                         return const SizedBox(height: 10);

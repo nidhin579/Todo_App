@@ -12,28 +12,29 @@ class AddTaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return MaterialButton(
-      color: theme.colorScheme.surface,
+      color: theme.colorScheme.onSurface,
       elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: const BorderSide()
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       onPressed: onTap,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            'Add Task',
-            style: theme.textTheme.titleMedium?.copyWith(
-              color: theme.colorScheme.onPrimaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Add Task',
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.colorScheme.surface,
+              ),
             ),
-          ),
-          const SizedBox(width: 6),
-          const Icon(
-            Icons.add_circle,
-            size: 22,
-          )
-        ],
+            const SizedBox(width: 6),
+            Icon(
+              Icons.add_circle,
+              size: 22,
+              color: theme.colorScheme.surface,
+            )
+          ],
+        ),
       ),
     );
   }

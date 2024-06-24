@@ -3,10 +3,9 @@ import 'package:todo_app/ui/common/app_colors.dart';
 import 'package:todo_app/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:todo_app/ui/views/home/widgets/app_button.dart';
 
 import 'info_alert_dialog_model.dart';
-
-const double _graphicSize = 60;
 
 class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
   final DialogRequest request;
@@ -38,7 +37,6 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                 Expanded(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         request.title!,
@@ -46,55 +44,25 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                             fontSize: 16, fontWeight: FontWeight.w900),
                       ),
                       verticalSpaceTiny,
-                      Text(
-                        request.description!,
-                        style:
-                            const TextStyle(fontSize: 14, color: kcMediumGrey),
-                        maxLines: 3,
-                        softWrap: true,
-                      ),
+                      if (request.description?.isNotEmpty ?? false)
+                        Text(
+                          request.description!,
+                          style: const TextStyle(
+                              fontSize: 14, color: kcMediumGrey),
+                          maxLines: 3,
+                          softWrap: true,
+                        ),
                     ],
                   ),
                 ),
-                Container(
-                  width: _graphicSize,
-                  height: _graphicSize,
-                  decoration: const BoxDecoration(
-                    color: Color(0xffF6E7B0),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(_graphicSize / 2),
-                    ),
-                  ),
-                  alignment: Alignment.center,
-                  child: const Text(
-                    '⭐️',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                )
               ],
             ),
             verticalSpaceMedium,
-            GestureDetector(
+            AppButton(
+              text: 'OK',
               onTap: () => completer(DialogResponse(
                 confirmed: true,
               )),
-              child: Container(
-                height: 50,
-                width: double.infinity,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: const Text(
-                  'Got it',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
             )
           ],
         ),
