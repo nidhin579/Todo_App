@@ -26,9 +26,9 @@ class HomeViewModel extends BaseViewModel {
     );
   }
 
-  void showBottomSheet() {
+  void showAddTaskSheet() {
     _bottomSheetService.showCustomSheet(
-      variant: BottomSheetType.notice,
+      variant: BottomSheetType.addTask,
       title: ksHomeBottomSheetTitle,
       description: ksHomeBottomSheetDescription,
     );

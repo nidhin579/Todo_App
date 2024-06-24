@@ -76,7 +76,7 @@ class TaskCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               border: Border.all(),
-              color: taskColor,
+              color: taskColor.withOpacity(0.5),
             ),
             child: Text(
               taskStatus,

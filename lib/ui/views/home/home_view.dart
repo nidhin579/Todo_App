@@ -14,18 +14,28 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
+    final theme = Theme.of(context);
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'TODO',
+          style: theme.textTheme.titleLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: theme.canvasColor,
+      ),
+      floatingActionButton: AddTaskButton(
+        onTap: viewModel.showAddTaskSheet,
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const SizedBox(height: 16),
-              AddTaskButton(
-                onTap: () {},
-              ),
-              const SizedBox(height: 16),
               Expanded(
                 child: StreamBuilder(
                   stream: FirebaseFirestore.instance

@@ -1,4 +1,4 @@
-import 'package:todo_app/ui/bottom_sheets/notice/notice_sheet.dart';
+import 'package:todo_app/ui/bottom_sheets/notice/add_task_sheet.dart';
 import 'package:todo_app/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:todo_app/ui/views/home/home_view.dart';
 import 'package:todo_app/ui/views/startup/startup_view.dart';
@@ -19,7 +19,7 @@ import 'package:stacked_services/stacked_services.dart';
     // @stacked-service
   ],
   bottomsheets: [
-    StackedBottomsheet(classType: NoticeSheet),
+    StackedBottomsheet(classType: AddTaskSheet),
     // @stacked-bottom-sheet
   ],
   dialogs: [
