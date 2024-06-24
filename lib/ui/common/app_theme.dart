@@ -1,0 +1,55 @@
+import 'package:flutter/material.dart';
+
+final appTheme = ThemeData(
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    toolbarHeight: kToolbarHeight + 16,
+    scrolledUnderElevation: 1,
+    elevation: 1,
+    shadowColor: _darkColorScheme.secondary,
+  ),
+  bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    backgroundColor: _darkColorScheme.surface,
+    selectedItemColor: _darkColorScheme.primary,
+    unselectedItemColor: _darkColorScheme.onSurfaceVariant,
+    type: BottomNavigationBarType.fixed,
+    showUnselectedLabels: true,
+  ),
+  colorScheme: _darkColorScheme,
+  bannerTheme: MaterialBannerThemeData(
+    backgroundColor: _darkColorScheme.primaryContainer,
+  ),
+  useMaterial3: true,
+  fontFamily: 'Poppins',
+);
+
+const _darkColorScheme = ColorScheme(
+  brightness: Brightness.dark,
+  primary: Color(0xFFADC6FF),
+  onPrimary: Color(0xFF002E69),
+  primaryContainer: Color(0xFF004494),
+  onPrimaryContainer: Color(0xFFD8E2FF),
+  secondary: Color(0xFFBFC6DC),
+  onSecondary: Color(0xFF293041),
+  secondaryContainer: Color(0xFF3F4759),
+  onSecondaryContainer: Color(0xFFDBE2F9),
+  tertiary: Color(0xFFDEBCDF),
+  onTertiary: Color(0xFF402843),
+  tertiaryContainer: Color(0xFF583E5B),
+  onTertiaryContainer: Color(0xFFFBD7FC),
+  error: Color(0xFFFFB4AB),
+  errorContainer: Color(0xFF93000A),
+  onError: Color(0xFF690005),
+  onErrorContainer: Color(0xFFFFDAD6),
+  outline: Color(0xFF8E9099),
+  onInverseSurface: Color(0xFF1B1B1F),
+  inverseSurface: Color(0xFFE3E2E6),
+  inversePrimary: Color(0xFF005AC1),
+  shadow: Color(0xFF000000),
+  surfaceTint: Color(0xFFADC6FF),
+  outlineVariant: Color(0xFF44474F),
+  scrim: Color(0xFF000000),
+  surface: Color(0xFF121316),
+  onSurface: Color(0xFFC7C6CA),
+  onSurfaceVariant: Color(0xFFC4C6D0),
+);
