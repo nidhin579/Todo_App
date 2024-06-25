@@ -10,6 +10,7 @@ import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i3;
 import 'package:stacked_services/stacked_services.dart' as _i2;
+import 'package:todo_app/entities/task_entity.dart' as _i8;
 import 'package:todo_app/services/task_service.dart' as _i7;
 
 // ignore_for_file: type=lint
@@ -675,4 +676,41 @@ class MockDialogService extends _i1.Mock implements _i2.DialogService {
 /// A class which mocks [TaskService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTaskService extends _i1.Mock implements _i7.TaskService {}
+class MockTaskService extends _i1.Mock implements _i7.TaskService {
+  @override
+  _i5.Future<bool> addTask(_i8.TaskEntity? task) => (super.noSuchMethod(
+        Invocation.method(
+          #addTask,
+          [task],
+        ),
+        returnValue: _i5.Future<bool>.value(false),
+        returnValueForMissingStub: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
+
+  @override
+  _i5.Future<bool> updateTaskStatus(
+    String? id,
+    _i8.TaskStatus? status,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateTaskStatus,
+          [
+            id,
+            status,
+          ],
+        ),
+        returnValue: _i5.Future<bool>.value(false),
+        returnValueForMissingStub: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
+
+  @override
+  _i5.Future<bool> deleteTask(String? id) => (super.noSuchMethod(
+        Invocation.method(
+          #deleteTask,
+          [id],
+        ),
+        returnValue: _i5.Future<bool>.value(false),
+        returnValueForMissingStub: _i5.Future<bool>.value(false),
+      ) as _i5.Future<bool>);
+}
