@@ -1,3 +1,4 @@
+import 'package:rive/rive.dart';
 import 'package:stacked/stacked.dart';
 import 'package:todo_app/entities/task_entity.dart';
 import 'package:todo_app/ui/views/home/home_viewmodel.dart';
@@ -13,8 +14,21 @@ class TaskList extends ViewModelWidget<HomeViewModel> {
       stream: viewModel.taskReference.snapshots(),
       builder: (context, snapshot) {
         if ((snapshot.data?.docs.length ?? 0) < 1) {
-          return const Center(
-            child: Text('No tasks'),
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(
+                  height: 260,
+                  child: RiveAnimation.asset(
+                      'assets/animations/sleepingball.riv')),
+              Text(
+                'No tasks added. Please add new tasks.',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
+            ],
           );
         }
         return ListView.separated(
