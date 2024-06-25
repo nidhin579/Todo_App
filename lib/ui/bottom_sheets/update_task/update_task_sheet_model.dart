@@ -17,6 +17,10 @@ class UpdateTaskSheetModel extends BaseViewModel {
     String? status,
     String id,
   ) async {
+    if (title.isEmpty) {
+      showDialog('Title should not be empty.');
+      return;
+    }
     EasyLoading.show(status: 'Updating...');
     bool success = await _taskService.updateTask(TaskEntity(
       title: title,

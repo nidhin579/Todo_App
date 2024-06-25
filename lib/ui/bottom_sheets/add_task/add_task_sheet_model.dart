@@ -12,6 +12,10 @@ class AddTaskSheetModel extends BaseViewModel {
   final _navigatorService = locator<NavigationService>();
 
   void addTask(String title, String description) async {
+    if (title.isEmpty) {
+      showDialog('Title should not be empty.');
+      return;
+    }
     EasyLoading.show(status: 'Adding...');
     bool success = await _taskService.addTask(TaskEntity(
       title: title,
