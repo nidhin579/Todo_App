@@ -1,8 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:todo_app/entities/task_entity.dart';
 import 'package:todo_app/ui/common/ui_helpers.dart';
+import 'package:todo_app/ui/views/home/widgets/task_list.dart';
 import 'package:todo_app/ui/views/home/widgets/widgets.dart';
 import 'home_viewmodel.dart';
 
@@ -19,7 +18,7 @@ class HomeView extends StackedView<HomeViewModel> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'TODO',
+          'TODO.',
           style: theme.textTheme.headlineLarge?.copyWith(
             fontWeight: FontWeight.bold,
           ),
@@ -51,40 +50,11 @@ class HomeViewBody extends ViewModelWidget<HomeViewModel> {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             verticalSpaceMedium,
-            AddTaskButton(
-              onTap: viewModel.showAddTaskSheet,
-            ),
+            AddTaskButton(onTap: viewModel.showAddTaskSheet),
             verticalSpaceMedium,
-            Expanded(
-              child: StreamBuilder(
-                stream:
-                    FirebaseFirestore.instance.collection('tasks').snapshots(),
-                builder: (context, snapshot) {
-                  if ((snapshot.data?.docs.length ?? 0) < 1) {
-                    return const Center(
-                      child: Text(
-                        'No tasks',
-                      ),
-                    );
-                  }
-                  return ListView.separated(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: snapshot.data?.docs.length ?? 0,
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(height: 10);
-                    },
-                    itemBuilder: (context, index) {
-                      final data =
-                          TaskEntity.fromFirestore(snapshot.data?.docs[index]);
-                      return TaskCard(
-                        key: ValueKey(data.id),
-                        task: data,
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
+            const FilterButtons(),
+            verticalSpaceMedium,
+            const Expanded(child: TaskList()),
           ],
         ),
       ),

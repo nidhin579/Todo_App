@@ -1,9 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todo_app/entities/task_entity.dart';
+import 'package:todo_app/ui/views/home/home_viewmodel.dart';
 
 class TaskService {
   final _tasksCollectionReference =
       FirebaseFirestore.instance.collection('tasks');
+
+  Query<Map<String, dynamic>> getTaskCollectionReference(FilterType filter) {
+    Query<Map<String, dynamic>> reference =
+        FirebaseFirestore.instance.collection('tasks');
+    switch (filter) {
+      case FilterType.all:
+        break;
+      case FilterType.todo:
+        reference = reference.where('status', isEqualTo: 'todo');
+        break;
+      case FilterType.inProgress:
+        reference = reference.where('status', isEqualTo: 'in_progress');
+        break;
+      case FilterType.done:
+        reference = reference.where('status', isEqualTo: 'done');
+        break;
+    }
+    return reference;
+  }
 
   Future<bool> addTask(TaskEntity task) async {
     try {

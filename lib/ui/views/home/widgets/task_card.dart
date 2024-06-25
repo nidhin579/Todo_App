@@ -1,8 +1,7 @@
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_app/entities/task_entity.dart';
-import 'package:todo_app/ui/views/home/widgets/update_chips.dart';
-import 'widgets.dart';
+import 'package:todo_app/ui/views/home/widgets/widgets.dart';
 
 class TaskCard extends StatelessWidget {
   const TaskCard({

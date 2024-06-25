@@ -43,25 +43,27 @@ class _Chip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-        margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(12),
-          border: const Border(
-            bottom: BorderSide(width: 2),
-            left: BorderSide(),
-            right: BorderSide(),
-            top: BorderSide(),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+          decoration: BoxDecoration(
+            color: color,
+            borderRadius: BorderRadius.circular(12),
+            border: const Border(
+              bottom: BorderSide(width: 2),
+              left: BorderSide(),
+              right: BorderSide(),
+              top: BorderSide(),
+            ),
           ),
-        ),
-        child: Icon(
-          icon,
-          color: Colors.white,
+          child: Icon(
+            icon,
+            color: Colors.white,
+          ),
         ),
       ),
     );
