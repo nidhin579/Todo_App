@@ -4,3 +4,4 @@ export 'app_button.dart';
 export 'status_chips.dart';
 export 'filter_buttons.dart';
 export 'update_chips.dart';
+export 'task_list.dart';

@@ -3,6 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:todo_app/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:todo_app/services/task_service.dart';
+import 'package:todo_app/services/account_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -12,6 +13,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<TaskService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<AccountService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -19,6 +21,7 @@ void registerServices() {
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
   getAndRegisterTaskService();
+  getAndRegisterAccountService();
 // @stacked-mock-register
 }
 
@@ -76,6 +79,13 @@ MockTaskService getAndRegisterTaskService() {
   _removeRegistrationIfExists<TaskService>();
   final service = MockTaskService();
   locator.registerSingleton<TaskService>(service);
+  return service;
+}
+
+MockAccountService getAndRegisterAccountService() {
+  _removeRegistrationIfExists<AccountService>();
+  final service = MockAccountService();
+  locator.registerSingleton<AccountService>(service);
   return service;
 }
 // @stacked-mock-create

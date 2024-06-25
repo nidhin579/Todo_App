@@ -14,18 +14,12 @@ class StartupView extends StackedView<StartupViewModel> {
   ) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              'TODO',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const SizedBox(height: 12),
-            const CircularProgressIndicator(
-              strokeWidth: 6,
-            ),
-          ],
+        child: Text(
+          'TODO.',
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
     );

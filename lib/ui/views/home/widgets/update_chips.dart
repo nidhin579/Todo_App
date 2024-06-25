@@ -18,7 +18,7 @@ class UpdateChips extends ViewModelWidget<HomeViewModel> {
         _Chip(
           icon: Icons.edit,
           color: Colors.indigoAccent,
-          onTap: ()=>viewModel.showUpdateTaskSheet(task),
+          onTap: () => viewModel.showUpdateTaskSheet(task),
         ),
         _Chip(
           icon: Icons.delete,

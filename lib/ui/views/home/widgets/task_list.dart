@@ -22,7 +22,7 @@ class TaskList extends ViewModelWidget<HomeViewModel> {
                   child: RiveAnimation.asset(
                       'assets/animations/sleepingball.riv')),
               Text(
-                'No tasks added. Please add new tasks.',
+                'No tasks here!',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge

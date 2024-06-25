@@ -1,28 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 import 'package:todo_app/app/app.locator.dart';
 import 'package:todo_app/app/app.router.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:todo_app/services/account_service.dart';
 import 'package:todo_app/services/task_service.dart';
 
-class StartupViewModel extends BaseViewModel {
+class LoginViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
   final _accountService = locator<AccountService>();
   final _taskService = locator<TaskService>();
 
-  // Place anything here that needs to happen before we get into the application
-  Future runStartupLogic() async {
-    // shows the splash screen for 2 seconds
-    await Future.delayed(const Duration(seconds: 2));
-
-    final authenticated = FirebaseAuth.instance.currentUser != null;
-    if (!authenticated) {
-      // show login if not authenticated
-      _navigationService.replaceWithLoginView();
-      return;
-    }
-
+  Future fetchAccountAndNavigate() async {
     // Fetch account of the user
     final fetched = await _accountService.fetchAccount();
     if (!fetched) return;

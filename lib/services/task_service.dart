@@ -3,12 +3,23 @@ import 'package:todo_app/entities/task_entity.dart';
 import 'package:todo_app/ui/views/home/home_viewmodel.dart';
 
 class TaskService {
-  final _tasksCollectionReference =
-      FirebaseFirestore.instance.collection('tasks');
+  String? userId;
+  CollectionReference<Map<String, dynamic>>? _tasksCollectionReference;
+
+  void setUserId(String? userId) {
+    this.userId = userId;
+    _tasksCollectionReference = FirebaseFirestore.instance
+        .collection('accounts')
+        .doc(userId)
+        .collection('tasks');
+  }
 
   Query<Map<String, dynamic>> getTaskCollectionReference(FilterType filter) {
-    Query<Map<String, dynamic>> reference =
-        FirebaseFirestore.instance.collection('tasks');
+    Query<Map<String, dynamic>> reference = FirebaseFirestore.instance
+        .collection('accounts')
+        .doc(userId)
+        .collection('tasks');
+
     switch (filter) {
       case FilterType.all:
         break;
@@ -27,7 +38,7 @@ class TaskService {
 
   Future<bool> addTask(TaskEntity task) async {
     try {
-      await _tasksCollectionReference.add(task.toJson());
+      await _tasksCollectionReference?.add(task.toJson());
       return true;
     } catch (_) {
       return false;
@@ -36,7 +47,7 @@ class TaskService {
 
   Future<bool> updateTask(TaskEntity task) async {
     try {
-      await _tasksCollectionReference.doc(task.id).update(task.toJson());
+      await _tasksCollectionReference?.doc(task.id).update(task.toJson());
       return true;
     } catch (_) {
       return false;
@@ -55,7 +66,7 @@ class TaskService {
         case TaskStatus.invalid:
           statusId = 'todo';
       }
-      await _tasksCollectionReference.doc(id).set(
+      await _tasksCollectionReference?.doc(id).set(
         {'status': statusId},
         SetOptions(merge: true),
       );
@@ -67,7 +78,7 @@ class TaskService {
 
   Future<bool> deleteTask(String id) async {
     try {
-      await _tasksCollectionReference.doc(id).delete();
+      await _tasksCollectionReference?.doc(id).delete();
       return true;
     } catch (_) {
       return false;

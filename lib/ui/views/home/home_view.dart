@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:todo_app/ui/common/ui_helpers.dart';
-import 'package:todo_app/ui/views/home/widgets/task_list.dart';
 import 'package:todo_app/ui/views/home/widgets/widgets.dart';
 import 'home_viewmodel.dart';
 

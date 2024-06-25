@@ -16,7 +16,9 @@ class HomeViewModel extends BaseViewModel {
   FilterType filter = FilterType.all;
 
   Query<Map<String, dynamic>> get taskReference =>
-      _taskService.getTaskCollectionReference(filter);
+      _taskService.getTaskCollectionReference(
+        filter
+      );
 
   void showAddTaskSheet() {
     _bottomSheetService.showCustomSheet(variant: BottomSheetType.addTask);
