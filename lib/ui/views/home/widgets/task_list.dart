@@ -15,7 +15,11 @@ class TaskList extends ViewModelWidget<HomeViewModel> {
       stream: viewModel.taskReference.snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+          );
         }
         if ((snapshot.data?.docs.length ?? 0) < 1) {
           return Column(
