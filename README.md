@@ -25,7 +25,6 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### Prerequisites
 
 - Flutter SDK: [Install Flutter](https://flutter.dev/docs/get-started/install)
-- Firebase project: [Create a Firebase project](https://console.firebase.google.com/)
 - Dart: [Install Dart](https://dart.dev/get-dart)
 
 ### Installation
