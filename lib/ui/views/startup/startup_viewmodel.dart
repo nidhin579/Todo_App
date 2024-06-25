@@ -14,7 +14,7 @@ class StartupViewModel extends BaseViewModel {
   // Place anything here that needs to happen before we get into the application
   Future runStartupLogic() async {
     // shows the splash screen for 2 seconds
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     final authenticated = FirebaseAuth.instance.currentUser != null;
     if (!authenticated) {
